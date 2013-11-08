@@ -71,9 +71,9 @@ classdef GenProb < handle
         % Compute some helper indices
         % These will be very useful for calculating C.val
         % so make sure you understand what these lines are doing.
-        assignments = IndexToAssignment(1:prod(C.card), C.card);
-        indxA = AssignmentToIndex(assignments(:, mapA), A.card);
-        indxB = AssignmentToIndex(assignments(:, mapB), B.card);
+        assignments = GenProb.IndexToAssignment(1:prod(C.card), C.card);
+        indxA = GenProb.AssignmentToIndex(assignments(:, mapA), A.card);
+        indxB = GenProb.AssignmentToIndex(assignments(:, mapB), B.card);
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         % YOUR CODE HERE:
@@ -207,7 +207,7 @@ classdef GenProb < handle
                             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                             for k=1:numel(F(j).val)
                                 %get the assignment of this index
-                                curAssignment = IndexToAssignment(k,F(j).card);
+                                curAssignment = GenProb.IndexToAssignment(k,F(j).card);
                                 %if the value  of the variable x is not v then set to 0
                                 if curAssignment(indx)~= x
                                     F(j) = SetValueOfAssignment(F(j),curAssignment,0);
@@ -388,13 +388,13 @@ classdef GenProb < handle
 function v = GetValueOfAssignment(F, A, VO)
 
 if (nargin == 2),
-    indx = AssignmentToIndex(A, F.card);
+    indx = GenProb.AssignmentToIndex(A, F.card);
 else
     map = zeros(length(F.var), 1);
     for i = 1:length(F.var),
         map(i) = find(VO == F.var(i));
     end;
-    indx = AssignmentToIndex(A(map), F.card);
+    indx = GenProb.AssignmentToIndex(A(map), F.card);
 end;
 
 v = F.val(indx);

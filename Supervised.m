@@ -1,5 +1,11 @@
 %> @brief Class that contains static functions that are used for machine
 %> learning- all aspects
+%>
+%> @author Eoin O'Keeffe
+%>
+%> @date 10/10/2013
+%>
+%> @version 1.0
 classdef Supervised < handle
  
     

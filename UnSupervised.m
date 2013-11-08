@@ -92,7 +92,7 @@ classdef UnSupervised < handle
           % initial plot
           if showAsPlot==1
               subplot(121);
-              plotkmeans(X,c,mu);
+              UnSupervised.plotkmeans(X,c,mu);
               title(sprintf('K-means (repeat %d/%d)',repeat,numrepeats));
               subplot(122);
               plot(0,J,'x-','linewidth',3);
@@ -335,7 +335,7 @@ classdef UnSupervised < handle
         function plotkmeans(X,cc,mu)
 
             % plot result of K-means
-            mm = size(X,1);
+            mm = size(X,2);
             K  = size(mu,1);
 
             col = colormap;
@@ -349,7 +349,7 @@ classdef UnSupervised < handle
               plot(X(ii,1),X(ii,2),'.','markersize',16,'color',col(cc(ii),:));
             end
             for kk=1:K
-              plot(mu(kk,1),mu(kk,2),'+','markersize',20,'linewidth',3,'color',col(kk,:));
+              plot(mu(kk,1),mu(kk,1),'+','markersize',20,'linewidth',3,'color',col(kk,:));
             end
             if ~hh, hold off; end
         end %plotkmeans
